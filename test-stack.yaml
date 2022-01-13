@@ -1,0 +1,13 @@
+---
+Parameters:
+  Env:
+    Description: Current env
+    Type: String
+    Default: 'dev'
+    
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub DOC-EXAMPLE-BUCKET-${Env}
