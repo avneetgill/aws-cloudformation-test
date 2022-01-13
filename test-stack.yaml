@@ -10,4 +10,4 @@ Resources:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Retain
     Properties:
-      BucketName: !Sub DOC-EXAMPLE-BUCKET-${Env}
+      BucketName: !Sub avneet-test-${Env}
