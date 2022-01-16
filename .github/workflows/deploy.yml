@@ -44,12 +44,12 @@ jobs:
       - name: Check Environment Dev
         if: endsWith(github.ref, '/master')
         run: |
-          echo "User=Dev" >> $GITHUB_ENV
+          echo "User=dev" >> $GITHUB_ENV
       
       - name: Check Environment Prod
         if: endsWith(github.ref, '/prod')
         run: |
-          echo "User=Prod" >> $GITHUB_ENV
+          echo "User=prod" >> $GITHUB_ENV
 
       # Deploy to AWS CloudFormation
       - name: Deploy to AWS CloudFormation
