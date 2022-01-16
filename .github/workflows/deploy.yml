@@ -38,7 +38,7 @@ jobs:
       - name: Get User
         id: step_one
         run: |
-            echo "User=$(git status)" >> $GITHUB_ACTOR
+            echo "User=$(git config user.name)" >> $GITHUB_ENV
             echo $${{ env.User }}
       # Deploy to AWS CloudFormation
       - name: Deploy to AWS CloudFormation
