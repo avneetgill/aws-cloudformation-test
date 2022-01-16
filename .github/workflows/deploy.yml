@@ -35,21 +35,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.ACCESS_KEY_SECRET }}
           aws-region: us-east-2
       
-      # - name: Get User
-      #   id: step_one
-      #   run: |
-      #       echo "User=$GITHUB_ACTOR" >> $GITHUB_ENV
-      #       echo ${{ env.User }}
-      #       echo $(git config user.name)
-      - name: Set the value
+      - name: Get User
         id: step_one
         run: |
-          echo "action_state=yellow" >> $GITHUB_ENV
-      - name: Use the value
-        id: step_two
-        run: |
-          echo "${{ env.action_state }}"
-
+            echo "User=$GITHUB_ACTOR" >> $GITHUB_ENV
+      
       # Deploy to AWS CloudFormation
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
