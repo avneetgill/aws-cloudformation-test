@@ -36,7 +36,9 @@ jobs:
           aws-region: us-east-2
       
       - name: Get User
-        run: echo $GITHUB_ACTOR
+        id: step_one
+        run: |
+            echo "User=$(git status)" >> $GITHUB_ACTOR
           
       # Deploy to AWS CloudFormation
       - name: Deploy to AWS CloudFormation
@@ -45,4 +47,4 @@ jobs:
           name: avneet-test-stack
           template: test-stack.yaml
           no-fail-on-empty-changeset: "1"
-          parameter-overrides: "User=avneet"
+          parameter-overrides: "User=${{ env.User }}"
