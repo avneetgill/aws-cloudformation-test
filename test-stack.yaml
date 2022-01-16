@@ -1,13 +1,13 @@
 ---
 Parameters:
-  Env:
+  User:
     Description: Current env
     Type: String
-    Default: 'dev'
+    Default: 'root'
     
 Resources:
   S3Bucket:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Retain
     Properties:
-      BucketName: !Sub avneet-test-${Env}
+      BucketName: !Sub avneet-test-${User}
