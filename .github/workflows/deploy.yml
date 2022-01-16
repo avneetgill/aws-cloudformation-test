@@ -1,8 +1,9 @@
 name: 'Deploy to AWS CloudFormation'
 
 on: 
-  # push:
-  #   branches: [ main ]
+  push:
+    branches-ignore:
+      - master
     
   # pull_request:
   #   branches: [ master ]
@@ -40,6 +41,14 @@ jobs:
         run: |
             echo "User=$GITHUB_ACTOR" >> $GITHUB_ENV
       
+      - name: Check Environment
+        if: endsWith(github.ref, '/master')
+        run: |
+          echo "User=Dev" >> $GITHUB_ENV
+        if: endsWith(github.ref, '/prod')
+        run: |
+          echo "User=Prod" >> $GITHUB_ENV
+
       # Deploy to AWS CloudFormation
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
