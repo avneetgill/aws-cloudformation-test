@@ -39,7 +39,7 @@ jobs:
         id: step_one
         run: |
             echo "User=$(git status)" >> $GITHUB_ACTOR
-          
+            echo $${{ env.User }}
       # Deploy to AWS CloudFormation
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
