@@ -30,12 +30,13 @@ jobs:
       # Configure AWS Credential
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
-        run: echo $GITHUB_ACTOR
         with:
           aws-access-key-id: ${{ secrets.ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.ACCESS_KEY_SECRET }}
           aws-region: us-east-2
-          
+      
+      - name: Get User
+        run: echo $GITHUB_ACTOR
           
       # Deploy to AWS CloudFormation
       - name: Deploy to AWS CloudFormation
